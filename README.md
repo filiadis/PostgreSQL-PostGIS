@@ -1,2 +1,2 @@
-# PostgreSQL-PostGIS
+# PostgreSQL/PostGIS
 Shapefile automation procedure
