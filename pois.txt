@@ -1,0 +1,297 @@
+--add column
+ALTER TABLE public."pois1"
+ADD COLUMN name1 VARCHAR(100),
+ADD COLUMN type1 VARCHAR(50);
+
+-- copy rows 
+UPDATE public."pois1" SET 
+name1 = name,
+type1 = fclass;
+
+
+-- replace names
+UPDATE public."pois1" SET 
+type1 = 'Θρησκευτικός χώρος'
+WHERE (type1 = 'church' OR type1 = 'chruch' OR type1 = 'chucrh' OR type1 = 'ch'
+	   OR type1 = 'cathedral' OR type1 = 'chapel' 
+	   OR type1 = 'place_of_worship' OR type1 = 'wayside_shrine');
+
+UPDATE public."pois1" SET 
+type1 = 'Ξενοδοχείο / Δωμάτια'
+WHERE (type1 = 'apartments' OR type1 = 'hotel' OR type1 = 'motel' 
+	   OR type1 = 'resort' OR type1 = 'hostel' OR type1 = 'rooms');
+
+UPDATE public."pois1" SET 
+type1 = 'Καφετέρια'
+WHERE fclass = 'cafe';
+
+UPDATE public."pois1" SET 
+type1 = 'Καλλιτέχνημα'
+WHERE fclass = 'artwork';
+
+UPDATE public."pois1" SET 
+type1 = 'Αρτοποιείο'
+WHERE fclass = 'bakery';
+
+UPDATE public."pois1" SET 
+type1 = 'Κρεοπωλείο'
+WHERE fclass = 'butcher';
+
+UPDATE public."pois1" SET 
+type1 = 'Θέση κάμπινγκ'
+WHERE (fclass = 'camp_site' OR fclass = 'camp');
+
+UPDATE public."pois1" SET 
+type1 = 'Χώρος για τροχόσπιτα'
+WHERE fclass = 'caravan_site';
+
+UPDATE public."pois1" SET 
+type1 = 'Κάστρο'
+WHERE fclass = 'castle';
+
+UPDATE public."pois1" SET 
+type1 = 'Ξενώνας'
+WHERE fclass = 'guesthouse';
+
+UPDATE public."pois1" SET 
+type1 = 'Μουσείο'
+WHERE fclass = 'museum';
+
+UPDATE public."pois1" SET 
+type1 = 'Εστιατόριο'
+WHERE (type1 = 'restaurant' OR type1 = 'rest');
+
+UPDATE public."pois1" SET 
+type1 = 'Κέντρο διασκέδασης'
+WHERE (type1 = 'nightclub' OR fclass = 'club');
+
+UPDATE public."pois1" SET 
+type1 = 'Ιστορικός / Αρχαιολογικός χώρος'
+WHERE (type1 = 'archaeological' OR type1 = 'monument' OR type1 = 'archaelogical'
+	   OR type1 = 'ruins' OR type1 = 'memorial' OR type1 = 'historical' 
+	   OR type1 = 'castle' OR type1 = 'arch' OR type1 = 'battlefield');
+
+UPDATE public."pois1" SET 
+type1 = 'Στάδιο'
+WHERE (type1 = 'stadium');
+
+UPDATE public."pois1" SET 
+type1 = 'Υπερκατάστημα'
+WHERE (type1 = 'supermarket' OR type1 = 'sup' OR type1 = 'super');
+
+UPDATE public."pois1" SET 
+type1 = 'Θέατρο'
+WHERE (type1 = 'theatre' OR type1 = 'th');
+
+UPDATE public."pois1" SET 
+type1 = 'Κινηματογράφος'
+WHERE (type1 = 'cinema');
+
+UPDATE public."pois1" SET 
+type1 = 'Τράπεζα'
+WHERE (type1 = 'bank');
+
+UPDATE public."pois1" SET 
+type1 = 'Μπάρ'
+WHERE (type1 = 'bar' OR type1 = 'biergarten');
+
+UPDATE public."pois1" SET 
+type1 = 'Νεκροταφείο'
+WHERE (type1 = 'cemetary' OR type1 = 'graveyard' OR type1 = 'grave' OR type1 = 'gr');
+
+UPDATE public."pois1" SET 
+type1 = 'Φαρμακείο'
+WHERE (type1 = 'pharmacy');
+
+UPDATE public."pois1" SET 
+type1 = 'Βιβλιοθήκη'
+WHERE (type1 = 'library');
+
+UPDATE public."pois1" SET 
+type1 = 'Κέντρο συνάρθροισης'
+WHERE (type1 = 'community_centre');
+
+UPDATE public."pois1" SET 
+type1 = 'Τουριστικές πληροφορίες'
+WHERE (type1 = 'tourist_info');
+
+UPDATE public."pois1" SET 
+type1 = 'Παραλία'
+WHERE (type1 = 'beach' or type1 = 'b' or type1 = 'β');
+
+UPDATE public."pois1" SET 
+type1 = 'Ζωολογικός κήπος'
+WHERE (type1 = 'zoo');
+
+UPDATE public."pois1" SET 
+type1 = 'Ναυτικός όμιλος'
+WHERE (type1 = 'nautikos_omilos');
+
+UPDATE public."pois1" SET 
+type1 = 'Βενζινάδικο'
+WHERE (type1 = 'gas');
+
+UPDATE public."pois1" SET 
+type1 = 'Καταφύγιο'
+WHERE (type1 = 'shelter' or type1 = 'alpine_hut');
+
+UPDATE public."pois1" SET 
+type1 = 'Αξιοθέατα'
+WHERE (type1 = 'attraction' OR type1 = 'viewpoint' 
+	   OR type1 = 'fountain' OR type1 = 'observation_tower');
+
+UPDATE public."pois1" SET 
+type1 = 'Νερόμυλος'
+WHERE (type1 = 'water_mill');
+
+UPDATE public."pois1" SET 
+type1 = 'Κτηνιατρείο'
+WHERE (type1 = 'veterinary');
+
+UPDATE public."pois1" SET 
+type1 = 'Μουσικό ωδείο'
+WHERE (type1 = 'music school');
+
+UPDATE public."pois1" SET 
+type1 = 'Mall'
+WHERE (type1 = 'mall');
+
+UPDATE public."pois1" SET 
+type1 = 'Αεροπορία'
+WHERE (type1 = 'airforce');
+
+UPDATE public."pois1" SET 
+type1 = 'Σπήλαιο'
+WHERE (type1 = 'spilaio');
+
+UPDATE public."pois1" SET 
+type1 = 'Κολυμβητήριο'
+WHERE (type1 = 'swimming_pool');
+
+UPDATE public."pois1" SET 
+type1 = 'Πάρκο'
+WHERE (type1 = 'park');
+
+UPDATE public."pois1" SET 
+type1 = 'Παιδική χαρά'
+WHERE (type1 = 'playground' OR type1 = 'pl' OR type1 = 'πλ');
+
+UPDATE public."pois1" SET 
+type1 = 'Αθλητικές εγκαταστάσεις'
+WHERE (type1 = 'sport' OR type1 = 'sport facility' OR type1 = 'sp' OR type1 = 'σπ');
+
+UPDATE public."pois1" SET 
+type1 = 'Πρεσβεία'
+WHERE (type1 = 'embassy');
+
+UPDATE public."pois1" SET 
+type1 = 'Σαλέ'
+WHERE (type1 = 'chalet');
+
+UPDATE public."pois1" SET 
+type1 = 'Πάρκο οδηγικής συμπεριφοράς'
+WHERE (type1 = 'park_driving_practice' OR type1 = 'driving_park' OR type1 = 'kiklof');
+
+UPDATE public."pois1" SET 
+type1 = 'Φάρος'
+WHERE (type1 = 'lighthouse');
+
+UPDATE public."pois1" SET 
+type1 = 'Θεματικό πάρκο'
+WHERE (type1 = 'theme_park' OR type1 = 'thematic_park' OR type1 = 'theme');
+
+UPDATE public."pois1" SET 
+type1 = 'Σπήλαιο'
+WHERE (type1 = 'cave');
+
+UPDATE public."pois1" SET 
+type1 = 'Μεγάλη εταιρεία/Εργοστάσιο'
+WHERE (type1 = 'comp' OR type1 = 'company');
+
+UPDATE public."pois1" SET 
+type1 = 'Πολιτιστικό κέντρο'
+WHERE (type1 = 'politistiko_kentro' OR type1 = 'culture');
+
+UPDATE public."pois1" SET 
+type1 = 'Εκθεσιακός χώρος'
+WHERE (type1 = 'expo' OR type1 = 'ekthesiako_kentro');
+
+UPDATE public."pois1" SET 
+type1 = 'Σταθμός παραγωγής ηλεκτρικής ενέργειας'
+WHERE (type1 = 'energy');
+
+UPDATE public."pois1" SET 
+type1 = 'Πλανητάριο'
+WHERE (type1 = 'planitario');
+
+UPDATE public."pois1" SET 
+type1 = 'Συνεδριακό Κέντρο'
+WHERE (type1 = 'sinedriako');
+
+UPDATE public."pois1" SET 
+type1 = 'Πολυχώρος'
+WHERE (type1 = 'polichoros');
+
+UPDATE public."pois1" SET 
+type1 = 'Σταθμός εξυπηρέτησης αυτοκινητιστών (ΣΕΑ)'
+WHERE (type1 = 'sea');
+
+UPDATE public."pois1" SET 
+type1 = 'Γκαλερί'
+WHERE (type1 = 'gallery' OR type1 = 'arts_centre');
+
+UPDATE public."pois1" SET 
+type1 = 'Λουτρά'
+WHERE (type1 = 'loutra');
+
+UPDATE public."pois1" SET 
+type1 = 'Μέρος Αφαλάτωσης'
+WHERE (type1 = 'afalatosi');
+
+UPDATE public."pois1" SET 
+type1 = 'Λοιπά καταστήματα'
+WHERE (type1 = 'bookshop' OR type1 = 'car_rental' OR type1 = 'clothes'
+	  OR type1 = 'commercial' OR type1 = 'computer_shop' OR type1 = 'fast_food' 
+	   OR type1 = 'florist' OR type1 = 'furniture_shop' OR type1 = 'jeweller'
+	  OR type1 = 'pub' OR type1 = 'retail' OR type1 = 'shoe_shop' OR type1 = 'sports_shop'
+	  OR type1 = 'bakery' OR type1 = 'sports_shop' OR type1 = 'convenience' OR type1 = 'hairdresser'
+	  OR type1 = 'beverages' OR type1 = 'bakery' OR type1 = 'beauty_shop' OR type1 = 'laundry'
+	  OR type1 = 'gift_Shop' OR type1 = 'optician' OR type1 = 'car_dealership' 
+	   OR type1 = 'greengrocer' OR type1 = 'dentist' OR type1 = 'doctors' OR type1 = 'stationery'
+	  OR type1 = 'car_wash' OR type1 = 'video_shop' OR type1 = 'mobile_phone_shop' 
+	   OR type1 = 'bicycle_shop' OR type1 = 'gift_shop' OR type1 = 'outdoor_shop'
+	  OR type1 = 'market_place' OR type1 = 'vending_any' OR type1 = 'garden_centre'
+	  OR type1 = 'department_store' OR type1 = 'sports_centre' OR type1 = 'toy_shop' 
+	   OR type1 = 'bicycle_rental' OR type1 = 'travel_agent' OR type1 = 'shop' OR type1 = 'general'
+	  OR type1 = 'newsagent' OR type1 = 'st');
+	  
+
+DELETE FROM public."pois1"
+WHERE (type1 = 'bench' OR type1 = 'kiosk' OR type1 = 'atm' OR type1 = 'recycling_glass' 
+	  OR type1 = 'recycling' OR type1 = 'comms_tower' OR type1 = 'post_office'
+	  OR type1 = 'waste_basket' OR type1 = 'telephone' OR type1 = 'kindergarten'
+	  OR type1 = 'recycling_clothes' OR type1 = 'waste_basket' OR type1 = 'school' 
+	   OR type1 = 'post_box' OR type1 = 'police' OR type1 = 'doityourself'
+	  OR type1 = 'recycling_clothes' OR type1 = 'waste_basket' OR type1 = 'drinking_water'
+	  OR type1 = 'camera_surveillance' OR type1 = 'fire_station' OR type1 = 'water_well'
+	  OR type1 = 'hospital' OR type1 = 'tower' OR type1 = 'chemist' OR type1 = 'recycling_paper'
+	  OR type1 = 'toilet' OR type1 = 'picnic_site' OR type1 = 'pitch' OR type1 = 'courthouse'
+	  OR type1 = 'army_camp' OR type1 = 'town_hall' OR type1 = 'windmill' OR type1 = 'water_tower'
+	  OR type1 = 'food_court' OR type1 = 'college' OR type1 = 'university' OR type1 = 'vending_machine'
+	  OR type1 = 'nursing_home');
+
+
+--export to qgis
+DROP TABLE IF EXISTS "pois_test";
+
+SELECT osm_id as id, geom, name1 as name, type1 as type
+INTO pois_test
+FROM public."pois1";
+
+
+
+
+
+
+
+

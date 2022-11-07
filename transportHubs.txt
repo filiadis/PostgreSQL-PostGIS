@@ -1,0 +1,68 @@
+--add column
+ALTER TABLE public."transportHubs1"
+ADD COLUMN name1 VARCHAR(100),
+ADD COLUMN type1 VARCHAR(50),
+ADD COLUMN traffic INT;
+
+-- copy rows 
+UPDATE public."transportHubs1" SET 
+name1 = name,
+type1 = fclass;
+
+
+
+-- replace names
+UPDATE public."transportHubs1" SET 
+type1 = 'Στάση λεωφορείου'
+WHERE (type1 = 'bus_stop');
+
+UPDATE public."transportHubs1" SET 
+type1 = 'Σταθμός λεωφορείου'
+WHERE (type1 = 'bus_station');
+
+UPDATE public."transportHubs1" SET 
+type1 = 'Ελικοδρόμειο'
+WHERE (type1 = 'helipad');
+
+UPDATE public."transportHubs1" SET 
+type1 = 'Λιμάνι'
+WHERE (type1 = 'ferry_terminal' or type1 = 'port');
+
+UPDATE public."transportHubs1" SET 
+type1 = 'Μέσα Σταθερής Τροχιάς'
+WHERE (type1 = 'railway_station' or type1 = 'metro_station');
+
+UPDATE public."transportHubs1" SET 
+type1 = 'Στάση τράμ'
+WHERE (type1 = 'tram_stop');
+
+UPDATE public."transportHubs1" SET 
+type1 = 'Μαρίνα'
+WHERE (type1 = 'marina');
+
+UPDATE public."transportHubs1" SET 
+type1 = 'Αεροδρόμιο'
+WHERE (type1 = 'airport');
+
+UPDATE public."transportHubs1" SET 
+type1 = 'Στάση Μέσου Σταθερής Τροχιάς'
+WHERE (type1 = 'railway_halt');
+
+DELETE FROM public."transportHubs1"
+WHERE (type1 = 'taxi');
+
+
+--export to qgis
+DROP TABLE IF EXISTS "trans_test";
+
+SELECT osm_id as id, geom, name1 as name, type1 as type,traffic
+INTO trans_test
+FROM public."transportHubs1";
+
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+--add column
+ALTER TABLE public."blocks1"
+ADD COLUMN id2 INT,
+ADD COLUMN code2 VARCHAR(100),
+ADD COLUMN area2 DOUBLE PRECISION default(10),
+ADD COLUMN ConstrFactor2 VARCHAR(10),
+ADD COLUMN CoverFactor2 VARCHAR(10);
+
+
+-- copy rows 
+UPDATE public."blocks1" SET 
+code2 = ot_code;
+
+--add area
+UPDATE public."blocks1"
+SET area2 = ST_AREA(geom) / 10000;
+
+
+--export to qgis
+DROP TABLE IF EXISTS "blocks_test";
+
+SELECT geom, id2 as id, code2 as code, area2 as area, ConstrFactor2, CoverFactor2
+INTO blocks_test
+FROM public."blocks1";
+

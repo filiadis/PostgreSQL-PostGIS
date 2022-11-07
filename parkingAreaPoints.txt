@@ -1,0 +1,30 @@
+ALTER TABLE public."parkingAreaPoint2"
+ADD COLUMN id1 INT,
+ADD COLUMN name1 VARCHAR(100),
+ADD COLUMN type VARCHAR(50),
+ADD COLUMN spot INT,
+ADD COLUMN roof INT,
+ADD COLUMN underground INT,
+ADD COLUMN free INT;
+
+-- copy rows 
+UPDATE public."parkingAreaPoint2" SET 
+type = amenity;
+
+-- replace names
+UPDATE public."parkingAreaPoint2" SET 
+type = 'Πάρκινγκ'
+WHERE type = 'parking';
+
+UPDATE public."parkingAreaPoint2" SET 
+type = 'Πάρκινγκ εξυπηρέτησης'
+WHERE type = 'service';
+
+--export to qgis
+DROP TABLE IF EXISTS "parking_test";
+
+SELECT geom, id1, name1, type, spot, roof, underground, free
+INTO parking_test
+FROM public."parkingAreaPoint2";
+
+

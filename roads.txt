@@ -1,0 +1,78 @@
+--add column
+ALTER TABLE public."roads1"
+ADD COLUMN id1 INT,
+ADD COLUMN hierarchy VARCHAR(50),
+ADD COLUMN length double precision default (50),
+ADD COLUMN parkingPermitted SMALLINT,
+ADD COLUMN parkingPlaces INT,
+ADD COLUMN parkingDensity double precision default (50),
+ADD COLUMN name3 VARCHAR(100),
+ADD COLUMN width INT,
+ADD COLUMN pavWclass VARCHAR(50),
+ADD COLUMN hierFut VARCHAR(50),
+ADD COLUMN legislation VARCHAR(50);
+
+-- copy rows 
+UPDATE public."roads1" SET 
+hierarchy = fclass,
+name3 = name;
+
+-- replace names
+UPDATE public."roads1" SET 
+hierarchy = 'Αυτοκινητόδρομος'
+WHERE hierarchy = 'motorway' or hierarchy = 'motorway_link' 
+	or hierarchy = 'trunk' or hierarchy = 'trunk_link';
+
+UPDATE public."roads1" SET 
+hierarchy = 'Πρωτεύουσα οδός'
+WHERE hierarchy = 'primary' or hierarchy = 'primary_link';
+	
+
+UPDATE public."roads1" SET 
+hierarchy = 'Δευτερεύουσα οδός'
+WHERE hierarchy = 'secondary' or hierarchy = 'secondary_link';
+
+UPDATE public."roads1" SET 
+hierarchy = 'Συλλεκτήρια οδός'
+WHERE hierarchy = 'tertiary' or hierarchy = 'tertiary_link';
+
+UPDATE public."roads1" SET 
+hierarchy = 'Τοπικό οδικό δίκτυο'
+WHERE hierarchy = 'residential';
+
+UPDATE public."roads1" SET 
+hierarchy = 'Οδός ήπιας κυκλοφορίας'
+WHERE hierarchy = 'unclassified' or hierarchy = 'living_street'
+	or hierarchy = 'pedestrian';
+
+UPDATE public."roads1" SET 
+hierarchy = 'Λοιπές οδοί'
+WHERE (hierarchy = 'footway' OR hierarchy = 'path' OR hierarchy = 'service'
+	  OR hierarchy = 'steps' OR hierarchy = 'trac%' OR hierarchy = 'path'
+	  OR hierarchy = 'cycleway');
+	  
+UPDATE public."roads1" SET 
+hierarchy = 'Λοιπές οδοί'
+WHERE hierarchy like 'trac%';	 
+
+
+--add length
+UPDATE public."roads1"
+SET length = ST_LENGTH(geom);
+
+
+--export to qgis
+DROP TABLE IF EXISTS "roads_test";
+
+SELECT geom, id1 as id, hierarchy, length, parkingPermitted, parkingPlaces, parkingDensity, name3 as name,
+width,pavWclass,hierFut,legislation
+INTO roads_test
+FROM public."roads1";
+
+
+
+
+
+
+
+
